@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useMemo } from "react";
+
+import Player from "components/Player";
+import Library from "components/Library";
+
+import getData from "data";
 
 function App() {
+  const tracks = useMemo(() => getData(), []);
+  const [trackIndex, setTrackIndex] = useState(0);
+
+  const onSetTrack = (value: number) => {
+    tracks[trackIndex].active = false;
+    tracks[value].active = true;
+    setTrackIndex(value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="player-app">
+      <Library tracks={tracks} onSetTrack={onSetTrack} />
+      <Player tracks={tracks} trackIndex={trackIndex} onSetTrack={onSetTrack} />
+    </main>
   );
 }
 

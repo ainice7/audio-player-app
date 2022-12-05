@@ -1,0 +1,47 @@
+.audio-controls {
+  display: flex;
+  justify-content: space-between;
+  width:  75%;
+  margin: 15px auto;
+  position: relative;
+
+  .prev svg, .next svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .play svg, .pause svg {
+    height: 40px;
+    width: 40px;
+  }
+
+  path {
+    fill: var(--white);
+  }
+}
+
+input[type=range] {
+	height: 5px;
+	-webkit-appearance: none;
+	width: 100%;
+	border-radius: 8px;
+	transition: background 0.2s ease;
+	cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0px 1px 5px #000;
+}
